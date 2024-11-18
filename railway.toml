@@ -1,0 +1,14 @@
+[build]
+builder = "nixpacks"
+buildCommand = "pnpm install && pnpm run build"
+
+[deploy]
+startCommand = "node ./build/server/index.js"
+healthcheckPath = "/"
+healthcheckTimeout = 100
+restartPolicy = "on-failure"
+numReplicas = 1
+
+[variables]
+PORT = "3000"
+NODE_ENV = "production"
